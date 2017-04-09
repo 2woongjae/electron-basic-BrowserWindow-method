@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button id="current">current.id</button>
+    <button id="all">all.id</button>
+
+    <script>
+        const {BrowserWindow} = require('electron').remote;
+
+        const btn_current = document.querySelector('#current');
+        const btn_all = document.querySelector('#all');
+
+        btn_current.addEventListener('click', () => {
+            const current = BrowserWindow.getFocusedWindow();
+            alert(current.id);
+        });
+
+        btn_all.addEventListener('click', () => {
+            const all = BrowserWindow.getAllWindows();
+            const ids = all.map(win => win.id);
+            alert(ids);
+        });
+    </script>
+</body>
+</html>
